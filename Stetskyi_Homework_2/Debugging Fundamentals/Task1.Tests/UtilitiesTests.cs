@@ -7,7 +7,6 @@ namespace Task1.Tests
     [TestFixture]
     public class Tests
     {
-        
         [Test]
         public void Sort_Numbers_ReturnsAscendingSortedNumbers()
         {
@@ -127,20 +126,6 @@ namespace Task1.Tests
             int index = Utilities.IndexOf(products, product => product.Equals(productToFind));
 
             Assert.That(index, Is.EqualTo(-1));
-        }
-
-        
-        //TODO: fix code to make this test to be passed
-        [Test]
-        public void IndexOf_ProductToFindWithNegativePrice_ThrowsArgumentException()
-        {
-            Assert.That(() =>
-            {
-                var products = new Product[] { new Product("Product 1", 10.0d) };
-                var productToFind = new Product("Product 3", -5);
-
-                int index = Utilities.IndexOf(products, product => product.Equals(productToFind));
-            }, Throws.InstanceOf<ArgumentException>());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Task3.DoNotChange;
 
 namespace Task3
@@ -12,25 +13,49 @@ namespace Task3
             _userDao = userDao;
         }
 
-        public int AddTaskForUser(int userId, UserTask task)
+        public string AddTaskForUser(int userId, UserTask task)
         {
-            if (userId < 0)
-                return -1;
+            IUser user;
+            IList<IUserTask> tasks;
 
-            var user = _userDao.GetUser(userId);
-            if (user == null)
-                return -2;
 
-            var tasks = user.Tasks;
-            foreach (var t in tasks)
+            try
             {
-                if (string.Equals(task.Description, t.Description, StringComparison.OrdinalIgnoreCase))
-                    return -3;
+                if (userId < 0)
+                {
+                    throw new Exception("Invalid userId");
+                }
+
+                user = _userDao.GetUser(userId);
+
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
             }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            try
+            {
+                tasks = user.Tasks;
+                foreach (IUserTask t in tasks)
+                {
+                    if (string.Equals(task.Description, t.Description, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new Exception("The task already exists");
+                    }
+                }
+                tasks.Add(task);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            return null;
 
-            tasks.Add(task);
-
-            return 0;
         }
     }
 }

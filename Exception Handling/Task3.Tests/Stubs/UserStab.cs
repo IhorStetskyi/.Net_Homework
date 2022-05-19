@@ -5,7 +5,7 @@ namespace Task3.Tests.Stubs
 {
     internal class UserStab : IUser
     {
-        public IList<UserTask> Tasks { get; } = new List<UserTask>
+        public IList<IUserTask> Tasks { get; } = new List<IUserTask>
         {
             new UserTask("task1"),
             new UserTask("task2"),

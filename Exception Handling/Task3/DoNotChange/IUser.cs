@@ -4,6 +4,10 @@ namespace Task3.DoNotChange
 {
     public interface IUser
     {
-        IList<UserTask> Tasks { get; }
+        /// <summary>
+        /// UserTask is changed to IUserTask
+        /// Please see explanation in IUserTask interface
+        /// </summary>
+        IList<IUserTask> Tasks { get; }
     }
 }

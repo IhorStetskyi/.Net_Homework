@@ -1,0 +1,10 @@
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\bin\Release\netstandard2.0\ConcatenationLib.deps.json
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\bin\Release\netstandard2.0\ConcatenationLib.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\bin\Release\netstandard2.0\ConcatenationLib.pdb
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.csproj.AssemblyReference.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.AssemblyInfoInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.AssemblyInfo.cs
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.csproj.CoreCompileInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework_1\ConcatenationLib\obj\Release\netstandard2.0\ConcatenationLib.pdb

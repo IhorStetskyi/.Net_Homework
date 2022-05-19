@@ -1,0 +1,20 @@
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.deps.json
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.pdb
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.csproj.AssemblyReference.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.AssemblyInfoInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.AssemblyInfo.cs
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.csproj.CoreCompileInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.pdb
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.deps.json
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\bin\Debug\netcoreapp3.1\Task1.pdb
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.csproj.AssemblyReference.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.AssemblyInfoInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.AssemblyInfo.cs
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.csproj.CoreCompileInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.dll
+C:\Users\Ihor_Stetskyi\Desktop\Homework\Stetskyi_Homework_2\to check\Debugging Fundamentals\Task1\obj\Debug\netcoreapp3.1\Task1.pdb

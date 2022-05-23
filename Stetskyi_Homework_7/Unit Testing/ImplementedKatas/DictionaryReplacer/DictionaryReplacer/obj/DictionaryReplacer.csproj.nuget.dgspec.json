@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Ihor_Stetskyi\\Desktop\\MyHWToPush\\.Net_Homework\\Stetskyi_Homework_7\\Unit Testing\\ImplementedKatas\\DictionaryReplacer\\DictionaryReplacer\\DictionaryReplacer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Ihor_Stetskyi\\Desktop\\MyHWToPush\\.Net_Homework\\Stetskyi_Homework_7\\Unit Testing\\ImplementedKatas\\DictionaryReplacer\\DictionaryReplacer\\DictionaryReplacer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Ihor_Stetskyi\\Desktop\\MyHWToPush\\.Net_Homework\\Stetskyi_Homework_7\\Unit Testing\\ImplementedKatas\\DictionaryReplacer\\DictionaryReplacer\\DictionaryReplacer.csproj",
+        "projectName": "DictionaryReplacer",
+        "projectPath": "C:\\Users\\Ihor_Stetskyi\\Desktop\\MyHWToPush\\.Net_Homework\\Stetskyi_Homework_7\\Unit Testing\\ImplementedKatas\\DictionaryReplacer\\DictionaryReplacer\\DictionaryReplacer.csproj",
+        "packagesPath": "C:\\Users\\Ihor_Stetskyi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ihor_Stetskyi\\Desktop\\MyHWToPush\\.Net_Homework\\Stetskyi_Homework_7\\Unit Testing\\ImplementedKatas\\DictionaryReplacer\\DictionaryReplacer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ihor_Stetskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Ihor_Stetskyi\\Desktop\\Packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://occm.pkgs.visualstudio.com/RPA/_packaging/RPA-Feed/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

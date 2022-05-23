@@ -1,0 +1,16 @@
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.exe
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.deps.json
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.runtimeconfig.json
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.runtimeconfig.dev.json
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.dll
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\ref\CalcStats.dll
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\bin\Debug\net5.0\CalcStats.pdb
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.csproj.AssemblyReference.cache
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.AssemblyInfoInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.AssemblyInfo.cs
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.csproj.CoreCompileInputs.cache
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.dll
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\ref\CalcStats.dll
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.pdb
+C:\Users\Ihor_Stetskyi\Desktop\MyHWToPush\.Net_Homework\Stetskyi_Homework_7\Unit Testing\ImplementedKatas\CalcStats\CalcStats\obj\Debug\net5.0\CalcStats.genruntimeconfig.cache

@@ -15,10 +15,28 @@ namespace Task3
 
         public string AddTaskForUser(int userId, UserTask task)
         {
-            IUser user;
-            IList<IUserTask> tasks;
+            IUser user = null;
+            IList<IUserTask> tasks = null;
+            string validationResult = null;
+            string creationResult = null;
 
+            validationResult = CheckForException(userId, ref user);
+            if (validationResult != null)
+            { 
+                return validationResult;
+            }
 
+            creationResult = TryToCreateTask(ref tasks, user, task);
+
+            return creationResult;
+        }
+
+        bool CheckForStringEqualityIgnoringCase(string a, string b)
+        {
+            return string.Equals(a, b, StringComparison.OrdinalIgnoreCase);
+        }
+        string CheckForException(int userId, ref IUser user)
+        {
             try
             {
                 if (userId < 0)
@@ -38,12 +56,17 @@ namespace Task3
             {
                 return e.Message;
             }
+            return null;
+        }
+        string TryToCreateTask(ref IList<IUserTask> tasks, IUser user, UserTask task)
+        {
             try
             {
                 tasks = user.Tasks;
                 foreach (IUserTask t in tasks)
                 {
-                    if (string.Equals(task.Description, t.Description, StringComparison.OrdinalIgnoreCase))
+                    bool areEqual = CheckForStringEqualityIgnoringCase(task.Description, t.Description);
+                    if (areEqual)
                     {
                         throw new Exception("The task already exists");
                     }
@@ -55,7 +78,6 @@ namespace Task3
                 return e.Message;
             }
             return null;
-
         }
     }
-}
+}//string.Equals(task.Description, t.Description, StringComparison.OrdinalIgnoreCase)

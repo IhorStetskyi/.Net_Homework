@@ -6,7 +6,6 @@ namespace Task1
     {
         private static void Main(string[] args)
         {
-            // TODO: Implement the task here.
             while (true)
             {
                 Console.WriteLine("Please Write something into console and press \"Enter\"");

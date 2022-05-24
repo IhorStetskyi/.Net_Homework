@@ -9,6 +9,7 @@ namespace Task2
             CheckForExceptionsAndTrim(ref stringValue);
             // Initialize a variables
             int num = 0;
+            int ZeroCode = 48;
             int n = stringValue.Length;
             int startChar = SelectStartChar(stringValue);
             bool negative = IsItNegativeValue(stringValue);
@@ -17,8 +18,8 @@ namespace Task2
             {
                 for (int i = startChar; i < n; i++)
                 {
-                    // Subtract 48 from the current digit 
-                    int tempnum = num * 10 - ((int)stringValue[i] - 48);
+                    // Subtract ZeroCode from the current digit 
+                    int tempnum = num * 10 - ((int)stringValue[i] - ZeroCode);
                     if (num != 0 && Math.Sign(tempnum) != Math.Sign(num))
                     {
                         throw new OverflowException("Value is more than Int32");
@@ -30,8 +31,8 @@ namespace Task2
             {
                 for (int i = startChar; i < n; i++)
                 {
-                    // Subtract 48 from the current digit 
-                    int tempnum = num * 10 + ((int)stringValue[i] - 48);
+                    // Subtract ZeroCode from the current digit 
+                    int tempnum = num * 10 + ((int)stringValue[i] - ZeroCode);
                     if (num != 0 && Math.Sign(tempnum) != Math.Sign(num))
                     {
                         throw new OverflowException("Value is more than Int32");
@@ -68,27 +69,27 @@ namespace Task2
 
         }
 
-        void CheckForNull(string someString)
+        void CheckForNull(string InputDataString)
         {
-            if (someString == null)
+            if (InputDataString == null)
             {
                 throw new ArgumentNullException("You should write something");
             }
         }
 
-        void CheckFormat(string someString)
+        void CheckFormat(string InputDataString)
         {
-            if (someString.Length == 0)
+            if (InputDataString.Length == 0)
             {
                 throw new FormatException("Wrong format");
             }
-            for (int i = 0; i < someString.Length; i++)
+            for (int i = 0; i < InputDataString.Length; i++)
             {
-                if (!"+-1234567890".Contains(someString[i]))
+                if (!"+-1234567890".Contains(InputDataString[i]))
                 {
                     throw new FormatException("Wrong format");
                 }
-                if (i > 0 && !"1234567890".Contains(someString[i]))
+                if (i > 0 && !"1234567890".Contains(InputDataString[i]))
                 {
                     throw new FormatException("Wrong format");
                 }

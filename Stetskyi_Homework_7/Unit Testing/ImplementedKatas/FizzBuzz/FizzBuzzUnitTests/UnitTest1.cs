@@ -6,20 +6,15 @@ using System;
 
 namespace FizzBuzzUnitTests
 {
-    public class Tests
+    public class UnitTest1
     {
 
-        [SetUp]
-        public void Setup()
-        {
-
-        }
 
         #region Tests
         [TestCaseSource(nameof(ListOfInts), new object[] { 1000 })]
         public void ShouldWriteNumber(int myint, string expectedresult)
         {
-            string result = Program.WriteFizzBuzz(myint);
+            string result = Program.IterateThroughArrayAndDisplayResult(myint);
             Assert.AreEqual(result, expectedresult);
         }
 
@@ -27,7 +22,7 @@ namespace FizzBuzzUnitTests
         [TestCaseSource(nameof(ListOfFizz), new object[] { 1000 })]
         public void ShouldWriteFizz(int myint, string expectedresult)
         {
-            string result = Program.WriteFizzBuzz(myint);
+            string result = Program.IterateThroughArrayAndDisplayResult(myint);
             Assert.AreEqual(result, expectedresult);
         }
 
@@ -35,7 +30,7 @@ namespace FizzBuzzUnitTests
         [TestCaseSource(nameof(ListOfBuzz), new object[] { 1000 })]
         public void ShouldWriteFizzBuzz(int myint, string expectedresult)
         {
-            string result = Program.WriteFizzBuzz(myint);
+            string result = Program.IterateThroughArrayAndDisplayResult(myint);
             Assert.AreEqual(result, expectedresult);
         }
 
@@ -43,21 +38,21 @@ namespace FizzBuzzUnitTests
         [TestCaseSource(nameof(ListOfFizzBuzz), new object[] { 1000 })]
         public void ShouldWriteBuzz(int myint, string expectedresult)
         {
-            string result = Program.WriteFizzBuzz(myint);
+            string result = Program.IterateThroughArrayAndDisplayResult(myint);
             Assert.AreEqual(result, expectedresult);
         }
 
         [TestCaseSource(nameof(ListOfNegativeNumbers), new object[] { -1000 })]
         public void ShouldWriteException(int myint, string expectedException)
         {
-            Exception ex = Assert.Throws<Exception>(() => Program.WriteFizzBuzz(myint));
+            Exception ex = Assert.Throws<Exception>(() => Program.IterateThroughArrayAndDisplayResult(myint));
             Assert.That(ex.Message, Is.EqualTo(expectedException));
         }
 
         [TestCase(0, "Zero is not allowed")]
         public void ShouldWriteNotInitiatedOrZero(int myint, string expectedException)
         {
-            Exception ex = Assert.Throws<Exception>(() => Program.WriteFizzBuzz(myint));
+            Exception ex = Assert.Throws<Exception>(() => Program.IterateThroughArrayAndDisplayResult(myint));
             Assert.That(ex.Message, Is.EqualTo(expectedException));
         }
         #endregion

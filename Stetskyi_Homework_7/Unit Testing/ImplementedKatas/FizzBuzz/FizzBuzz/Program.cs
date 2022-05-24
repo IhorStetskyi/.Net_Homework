@@ -4,28 +4,30 @@ namespace FizzBuzz
 {
     public class Program
     {
+        const int multiplyToThree = 3;
+        const int multiplyToFive = 5;
         static void Main(string[] args)
         {
             for (int i = 1; i < 100; i++)
             {
-                Console.WriteLine(WriteFizzBuzz(i));
+                Console.WriteLine(IterateThroughArrayAndDisplayResult(i));
             }
         }
 
-        public static string WriteFizzBuzz(int myint)
+        public static string IterateThroughArrayAndDisplayResult(int myint)
         {
             ExceptionHandler(myint);
 
 
-            if (myint % 3 == 0 && myint % 5 == 0)
+            if (myint % multiplyToThree == 0 && myint % multiplyToFive == 0)
             {
                 return "FizzBuzz";
             }
-            else if (myint % 3 == 0)
+            else if (myint % multiplyToThree == 0)
             {
                 return "Fizz";
             }
-            else if (myint % 5 == 0)
+            else if (myint % multiplyToFive == 0)
             {
                 return "Buzz";
             }

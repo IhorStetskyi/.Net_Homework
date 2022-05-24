@@ -30,7 +30,7 @@ namespace DictionaryReplacerUnitTests
         [TestCase("name", "John Doe")]
         public void CheckGetDictionaryValueMethod(string key, string value)
         {
-            string res = ExtensionClass.GetDictionaryValue(key);
+            string res = Extensions.GetDictionaryValue(key);
             Assert.AreEqual(value, res);
         }
 

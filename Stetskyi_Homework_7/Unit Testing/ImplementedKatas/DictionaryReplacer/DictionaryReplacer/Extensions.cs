@@ -3,7 +3,7 @@
 
 namespace DictionaryReplacer
 {
-    public static class ExtensionClass
+    public static class Extensions
     {
         public static string ReplaceWords(this string str)
         {

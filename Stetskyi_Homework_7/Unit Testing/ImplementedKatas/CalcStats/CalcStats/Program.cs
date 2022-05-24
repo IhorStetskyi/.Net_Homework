@@ -14,8 +14,7 @@ namespace CalcStats
                 arrayline += (item.ToString() + " ");
             }
 
-            StatsCalculator statsCalculator = new StatsCalculator();
-            ResultClass result = new ResultClass(statsCalculator.FindMin(array), statsCalculator.FindMax(array), statsCalculator.GetCount(array), statsCalculator.GetAvg(array));
+            Result result = new Result(array);
             
 
             Console.WriteLine($"Stats for the ({arrayline}) values:\n");

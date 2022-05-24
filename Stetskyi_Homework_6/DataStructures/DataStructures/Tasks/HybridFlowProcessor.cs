@@ -9,10 +9,7 @@ namespace Tasks
 
         public T Dequeue()
         {
-            if (source.Length == 0)
-            {
-                throw new InvalidOperationException("Source is empty");
-            }
+            SourceNotEmptyValidation();
             return source.RemoveAt(0);
         }
 
@@ -23,16 +20,22 @@ namespace Tasks
 
         public T Pop()
         {
-            if (source.Length == 0)
-            {
-                throw new InvalidOperationException("Source is empty");
-            }
+            SourceNotEmptyValidation();
             return source.RemoveAt(source.Length - 1);
         }
 
         public void Push(T item)
         {
             source.Add(item);
+        }
+
+
+        void SourceNotEmptyValidation()
+        {
+            if (source.Length == 0)
+            {
+                throw new InvalidOperationException("Source is empty");
+            }
         }
     }
 }

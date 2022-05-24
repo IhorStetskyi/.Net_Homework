@@ -82,8 +82,8 @@ namespace CalcStatsUnitTests
         [TestCase(-20, 20, 40, 50, 0)]
         public void BestTest(params int[] myparams)
         {
-            ResultClass real = new ResultClass(statsCalculator.FindMin(myparams), statsCalculator.FindMax(myparams), statsCalculator.GetCount(myparams), statsCalculator.GetAvg(myparams));
-            ResultClass expected = new ResultClass(-20, 50, 5, 18);
+            Result real = new Result(myparams);
+            Result expected = new Result(-20, 50, 5, 18);
 
             Assert.AreEqual(expected.MinValue, real.MinValue);
             Assert.AreEqual(expected.MaxValue, real.MaxValue);

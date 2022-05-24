@@ -5,9 +5,9 @@ using Tasks.DoNotChange;
 
 namespace Tasks
 {
-    public class DoublyLinkedList<T> : IDoublyLinkedList<T>, IEnumerator<T>, IEnumerator
+    public class DoublyLinkedList<T> : IDoublyLinkedList<T>, IEnumerator<T>
     {
-        public T[] elementArray = new T[0];
+        T[] elementArray = Array.Empty<T>();
         int position = -1;
 
         public T this[int index]

@@ -8,7 +8,6 @@ namespace CalcStats
 {
     public class StatsCalculator
     {
-
         public int FindMax(params int[] myparams)
         {
             int res = int.MinValue;

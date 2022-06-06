@@ -17,10 +17,13 @@ namespace BrainstormSessions.Controllers
         public SessionController(IBrainstormSessionRepository sessionRepository, ILogger<SessionController> logger)
         {
             _sessionRepository = sessionRepository;
+            log.Debug("SessionController Initialised");
         }
 
         public async Task<IActionResult> Index(int? id)
         {
+            log.Debug($"Method Index{id} Invoked");
+
             if (!id.HasValue)
             {
                 return RedirectToAction(actionName: nameof(Index),
@@ -40,7 +43,6 @@ namespace BrainstormSessions.Controllers
                 Id = session.Id
             };
 
-            //should be somewhere here? log.Debug("SessionController_Index_LogDebugMe4ssages");
             return View(viewModel);
         }
     }

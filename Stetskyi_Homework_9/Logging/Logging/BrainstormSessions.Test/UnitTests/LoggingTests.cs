@@ -11,6 +11,7 @@ using log4net.Config;
 using log4net.Core;
 using Moq;
 using Xunit;
+using Microsoft.Extensions.Logging;
 
 namespace BrainstormSessions.Test.UnitTests
 {
@@ -34,9 +35,10 @@ namespace BrainstormSessions.Test.UnitTests
         {
             // Arrange
             var mockRepo = new Mock<IBrainstormSessionRepository>();
+            var mockHomeControllerILog = new Mock<ILogger<HomeController>>();
             mockRepo.Setup(repo => repo.ListAsync())
                 .ReturnsAsync(GetTestSessions());
-            var controller = new HomeController(mockRepo.Object);
+            var controller = new HomeController(mockRepo.Object, mockHomeControllerILog.Object);
 
             // Act
             var result = await controller.Index();
@@ -51,9 +53,10 @@ namespace BrainstormSessions.Test.UnitTests
         {
             // Arrange
             var mockRepo = new Mock<IBrainstormSessionRepository>();
+            var mockHomeControllerILog = new Mock<ILogger<HomeController>>();
             mockRepo.Setup(repo => repo.ListAsync())
                 .ReturnsAsync(GetTestSessions());
-            var controller = new HomeController(mockRepo.Object);
+            var controller = new HomeController(mockRepo.Object, mockHomeControllerILog.Object);
             controller.ModelState.AddModelError("SessionName", "Required");
             var newSession = new HomeController.NewSessionModel();
 
@@ -70,7 +73,8 @@ namespace BrainstormSessions.Test.UnitTests
         {
             // Arrange & Act
             var mockRepo = new Mock<IBrainstormSessionRepository>();
-            var controller = new IdeasController(mockRepo.Object);
+            var mockIdeasControllerILog = new Mock<ILogger<IdeasController>>();
+            var controller = new IdeasController(mockRepo.Object, mockIdeasControllerILog.Object);
             controller.ModelState.AddModelError("error", "some error");
 
             // Act
@@ -87,10 +91,11 @@ namespace BrainstormSessions.Test.UnitTests
             // Arrange
             int testSessionId = 1;
             var mockRepo = new Mock<IBrainstormSessionRepository>();
+            var mockSessionControllerILog = new Mock<ILogger<SessionController>>();
             mockRepo.Setup(repo => repo.GetByIdAsync(testSessionId))
                 .ReturnsAsync(GetTestSessions().FirstOrDefault(
                     s => s.Id == testSessionId));
-            var controller = new SessionController(mockRepo.Object);
+            var controller = new SessionController(mockRepo.Object, mockSessionControllerILog.Object);
 
             // Act
             var result = await controller.Index(testSessionId);

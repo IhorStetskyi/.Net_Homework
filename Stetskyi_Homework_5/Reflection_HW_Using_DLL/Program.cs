@@ -1,7 +1,7 @@
 ﻿using System;
 using Reflection_HW.Controllers;
 using Reflection_HW.Enums;
-using Reflection_HW.TestClasses;
+using Reflection_HW_Using_DLL.TestClasses;
 
 namespace Reflection_HW_Using_DLL
 {
@@ -13,13 +13,13 @@ namespace Reflection_HW_Using_DLL
 
             AppSettingsConfigControllerExample();
 
-            //JsonControllerExample();
+            JsonControllerExample();
         }
 
         static void AppSettingsConfigControllerExample()
         {
-            TestPropertyClass1 tc1 = new TestPropertyClass1();
-            TestPropertyClass2 tc2 = new TestPropertyClass2();
+            TestClass1 tc1 = new TestClass1();
+            TestClass2 tc2 = new TestClass2();
 
             ProviderController controller1 = new ProviderController(ProviderEnum.AppSettings, tc1);
             ProviderController controller2 = new ProviderController(ProviderEnum.AppSettings, tc2);
@@ -51,8 +51,8 @@ namespace Reflection_HW_Using_DLL
         static void JsonControllerExample()
         {
 
-            TestPropertyClass1 tc1 = new TestPropertyClass1();
-            TestPropertyClass2 tc2 = new TestPropertyClass2();
+            TestClass1 tc1 = new TestClass1();
+            TestClass2 tc2 = new TestClass2();
 
             ProviderController controller1 = new ProviderController(ProviderEnum.JsonFile, tc1);
             ProviderController controller2 = new ProviderController(ProviderEnum.JsonFile, tc2);

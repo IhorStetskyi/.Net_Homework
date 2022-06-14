@@ -1,9 +1,8 @@
 ﻿using Reflection_HW.Attributes;
 
-
-namespace Reflection_HW.TestClasses
+namespace Reflection_HW_Using_DLL.TestClasses
 {
-    class TestPropertyClass2
+    class TestClass2
     {
         [ConfigurationItem("test_key_1_from_class_2", "test_value_1_from_class_2")]
         public string MyProperty { get; set; }

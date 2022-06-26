@@ -38,6 +38,7 @@ namespace BrainstormSessions.Controllers
 
             _logger.LogInformation("SERILOG_HomeController_Index_LogInfoMeaasge");
             log.Info("HomeController_Index_LogInfoMeaasge");
+            log.Error("This is Test Error");
 
             return View(model);
         }

@@ -37,8 +37,9 @@ namespace BrainstormSessions.Controllers
             });
 
             _logger.LogInformation("SERILOG_HomeController_Index_LogInfoMeaasge");
+            _logger.LogError("This is Test Serilog Error");
             log.Info("HomeController_Index_LogInfoMeaasge");
-            log.Error("This is Test Error");
+            log.Error("This is Test log4net Error");
 
             return View(model);
         }

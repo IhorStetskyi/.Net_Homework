@@ -16,13 +16,16 @@ namespace BrainstormSessions.Controllers
 
         public SessionController(IBrainstormSessionRepository sessionRepository, ILogger<SessionController> logger)
         {
+            _logger = logger;
             _sessionRepository = sessionRepository;
             log.Debug("SessionController Initialised");
+            _logger.LogDebug("Serilog SessionController Initialised");
         }
 
         public async Task<IActionResult> Index(int? id)
         {
             log.Debug($"Method Index{id} Invoked");
+            _logger.LogDebug($"Serilog Method Index{id} Invoked");
 
             if (!id.HasValue)
             {

@@ -1,0 +1,9 @@
+To: SomeRandomEmail@epam.com
+From: Ihor_Stetskyi@epam.com
+Subject: test logging message
+Date: Sun, 26 Jun 2022 21:18:34 GMT
+
+2022-06-27 00:18:33,981 INFO - HomeController_Index_LogInfoMeaasge
+2022-06-27 00:18:34,051 ERROR - This is Test Error
+
+.

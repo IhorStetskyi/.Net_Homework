@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SimpleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <deserialized>false</deserialized>
+  <MyProperty1>123</MyProperty1>
+  <MyProperty2>Some Property Value</MyProperty2>
+</SimpleClass>

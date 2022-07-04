@@ -1,0 +1,4 @@
+SimpleClass
+MyProperty1:123
+MyProperty2:Some Property Value
+deserialized:False

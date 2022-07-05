@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32428.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryReplacer", "DictionaryReplacer.csproj", "{3A303688-3422-4F7A-A0BE-36D812F74653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryReplacerUnitTests", "..\DictionaryReplacerUnitTests\DictionaryReplacerUnitTests.csproj", "{3D43A1E6-62D8-4AE9-99B0-EF4FBB120B95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A303688-3422-4F7A-A0BE-36D812F74653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A303688-3422-4F7A-A0BE-36D812F74653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A303688-3422-4F7A-A0BE-36D812F74653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A303688-3422-4F7A-A0BE-36D812F74653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D43A1E6-62D8-4AE9-99B0-EF4FBB120B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D43A1E6-62D8-4AE9-99B0-EF4FBB120B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D43A1E6-62D8-4AE9-99B0-EF4FBB120B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D43A1E6-62D8-4AE9-99B0-EF4FBB120B95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3503DAC-FFAB-40B2-BA14-3089CFF46BA5}
+	EndGlobalSection
+EndGlobal

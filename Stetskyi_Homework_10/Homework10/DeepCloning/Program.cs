@@ -13,21 +13,21 @@ namespace DeepCloning
             Employee emp2 = new Employee("Employee 2");
             Employee emp3 = new Employee("Employee 3");
 
-            department.employees.Add(emp1);
-            department.employees.Add(emp2);
-            department.employees.Add(emp3);
+            department.Employees.Add(emp1);
+            department.Employees.Add(emp2);
+            department.Employees.Add(emp3);
 
             //Cloning
             Department clone = department.DeepClone();
 
             //Changing old class
             department.DepartmentName = "Changed Department";
-            department.employees.Add(new Employee("Employee 4"));
-            department.employees.Add(new Employee("Employee 5"));
+            department.Employees.Add(new Employee("Employee 4"));
+            department.Employees.Add(new Employee("Employee 5"));
 
             //Show Results in Clone
             Console.WriteLine($"Name: {clone.DepartmentName}");
-            foreach (Employee emp in clone.employees)
+            foreach (Employee emp in clone.Employees)
             {
                 Console.WriteLine($"Employee: {emp.EmployeeName}");
             }

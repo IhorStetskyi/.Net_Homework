@@ -1,1 +1,1 @@
-{"myProperty1":123,"myProperty2":"Some Property Value","deserialized":false}
+{"MyProperty1":123,"MyProperty2":"Some Property Value","Deserialized":false}

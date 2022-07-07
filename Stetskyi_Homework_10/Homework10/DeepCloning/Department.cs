@@ -8,16 +8,16 @@ namespace DeepCloning
     class Department
     {
         public string DepartmentName { get; set; }
-        public List<Employee> employees { get; set; }
+        public List<Employee> Employees { get; set; }
         public Department(string departmentName)
         {
             DepartmentName = departmentName;
-            employees = new List<Employee>();
+            Employees = new List<Employee>();
         }
         public Department()
         {
             DepartmentName = String.Empty;
-            employees = new List<Employee>();
+            Employees = new List<Employee>();
         }
     }
 }

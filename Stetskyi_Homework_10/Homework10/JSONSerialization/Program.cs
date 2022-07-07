@@ -5,8 +5,8 @@ namespace JSONSerialization
 {
     class Program
     {
-        private const string newtonJsonPath = @"../../../../FolderToSaveFile/JSON.txt";
-        private const string jsonPath = @"../../../../FolderToSaveFile/JSON_Bad.txt";
+        private const string NewtonJsonPath = @"../../../../FolderToSaveFile/JSON.txt";
+        private const string JsonPath = @"../../../../FolderToSaveFile/JSON_Bad.txt";
         static void Main(string[] args)
         {
             Department department = new Department("JSON Department");
@@ -15,27 +15,27 @@ namespace JSONSerialization
             Employee emp2 = new Employee("Employee 2");
             Employee emp3 = new Employee("Employee 3");
 
-            department.employees.Add(emp1);
-            department.employees.Add(emp2);
-            department.employees.Add(emp3);
+            department.Employees.Add(emp1);
+            department.Employees.Add(emp2);
+            department.Employees.Add(emp3);
 
             DataSerializer dataSerializer = new DataSerializer();
 
-            dataSerializer.JSONSerializeNewtonsoft(department, newtonJsonPath);
-            dataSerializer.JSONSerialize(department, jsonPath);  //works fine now
+            dataSerializer.JSONSerializeNewtonsoft(department, NewtonJsonPath);
+            dataSerializer.JSONSerialize(department, JsonPath);  //works fine now
 
-            Department department_deserialized = dataSerializer.JSONDeserializeNewtonsoft<Department>(newtonJsonPath);
-            Department department_deserialized2 = dataSerializer.JSONDeserialize<Department>(jsonPath);  //works fine now
+            Department departmentDeserialized = dataSerializer.JSONDeserializeNewtonsoft<Department>(NewtonJsonPath);
+            Department departmentDeserialized2 = dataSerializer.JSONDeserialize<Department>(JsonPath);  //works fine now
 
-            Console.WriteLine($"Name: {department_deserialized.DepartmentName}");
-            foreach (Employee emp in department_deserialized.employees)
+            Console.WriteLine($"Name: {departmentDeserialized.DepartmentName}");
+            foreach (Employee emp in departmentDeserialized.Employees)
             {
                 Console.WriteLine($"Employee: {emp.EmployeeName}");
             }
 
             Console.WriteLine("\nNow works fine:\n");
-            Console.WriteLine($"Name: {department_deserialized2.DepartmentName}");
-            foreach (Employee emp in department_deserialized2.employees)
+            Console.WriteLine($"Name: {departmentDeserialized2.DepartmentName}");
+            foreach (Employee emp in departmentDeserialized2.Employees)
             {
                 Console.WriteLine($"Employee: {emp.EmployeeName}");
             }

@@ -5,7 +5,7 @@ namespace XMLSerialization
 {
     class Program
     {
-        private const string xmlPath = @"../../../../FolderToSaveFile/XML.txt";
+        private const string XmlPath = @"../../../../FolderToSaveFile/XML.txt";
         static void Main(string[] args)
         {
             Department department = new Department("XML Department");
@@ -14,18 +14,18 @@ namespace XMLSerialization
             Employee emp2 = new Employee("Employee 2");
             Employee emp3 = new Employee("Employee 3");
 
-            department.employees.Add(emp1);
-            department.employees.Add(emp2);
-            department.employees.Add(emp3);
+            department.Employees.Add(emp1);
+            department.Employees.Add(emp2);
+            department.Employees.Add(emp3);
 
             DataSerializer dataSerializer = new DataSerializer();
 
-            dataSerializer.XMLSerialize(department, xmlPath);
+            dataSerializer.XMLSerialize(department, XmlPath);
 
-            Department department_deserialized = dataSerializer.XMLDeserialize<Department>(xmlPath);
+            Department departmentDeserialized = dataSerializer.XMLDeserialize<Department>(XmlPath);
 
-            Console.WriteLine($"Name: {department_deserialized.DepartmentName}");
-            foreach (Employee emp in department_deserialized.employees)
+            Console.WriteLine($"Name: {departmentDeserialized.DepartmentName}");
+            foreach (Employee emp in departmentDeserialized.Employees)
             {
                 Console.WriteLine($"Employee: {emp.EmployeeName}");
             }

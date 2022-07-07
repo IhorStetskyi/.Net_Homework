@@ -5,7 +5,7 @@ namespace BinarySerialization
 {
     class Program
     {
-        private const string binaryPath = @"../../../../FolderToSaveFile/Binary.txt";
+        private const string BinaryPath = @"../../../../FolderToSaveFile/Binary.txt";
 
         static void Main(string[] args)
         {
@@ -15,18 +15,18 @@ namespace BinarySerialization
             Employee emp2 = new Employee("Employee 2");
             Employee emp3 = new Employee("Employee 3");
             
-            department.employees.Add(emp1);
-            department.employees.Add(emp2);
-            department.employees.Add(emp3);
+            department.Employees.Add(emp1);
+            department.Employees.Add(emp2);
+            department.Employees.Add(emp3);
 
             DataSerializer dataSerializer = new DataSerializer();
 
-            dataSerializer.BinarySerialize(department, binaryPath);
+            dataSerializer.BinarySerialize(department, BinaryPath);
 
-            Department department_deserialized = dataSerializer.BinaryDeserialize<Department>(binaryPath);
+            Department departmentDeserialized = dataSerializer.BinaryDeserialize<Department>(BinaryPath);
 
-            Console.WriteLine($"Name: {department_deserialized.DepartmentName}");
-            foreach (Employee emp in department_deserialized.employees)
+            Console.WriteLine($"Name: {departmentDeserialized.DepartmentName}");
+            foreach (Employee emp in departmentDeserialized.Employees)
             {
                 Console.WriteLine($"Employee: {emp.EmployeeName}");
             }

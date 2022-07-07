@@ -7,10 +7,13 @@ namespace DeepCloning
     class Employee
     {
         public string EmployeeName { get; set; }
-
-        public Employee(string name)
+        public Employee(string employeeName)
         {
-            EmployeeName = name;
+            EmployeeName = employeeName;
+        }
+        public Employee()
+        {
+            EmployeeName = String.Empty;
         }
     }
 }

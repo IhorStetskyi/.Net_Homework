@@ -1,1 +1,1 @@
-{"DepartmentName":"JSON Department"}
+{"myProperty1":123,"myProperty2":"Some Property Value","deserialized":false}

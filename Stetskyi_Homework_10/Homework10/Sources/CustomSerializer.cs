@@ -14,9 +14,9 @@ namespace Sources
         {
             _type = type;
         }
-        public SerializationBinder Binder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public StreamingContext Context { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ISurrogateSelector SurrogateSelector { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public SerializationBinder Binder { get; set; }
+        public StreamingContext Context { get; set; }
+        public ISurrogateSelector SurrogateSelector { get; set; }
 
         public object Deserialize(Stream serializationStream)
         {
@@ -35,25 +35,21 @@ namespace Sources
                     key = keyValue[0];
                     value = keyValue[1];
 
-                    PropertyInfo propertyInfo = _type.GetProperty(key);
-                    FieldInfo fieldInfo = _type.GetField(key);
+                    PropertyInfo intProperty = _type.GetProperty(key, typeof(int));
+                    PropertyInfo stringProperty = _type.GetProperty(key, typeof(string));
+                    PropertyInfo boolProperty = _type.GetProperty(key, typeof(bool));
 
-                    if (propertyInfo != null)
+                    if (intProperty != null)
                     {
-                        int tempOut = 0;
-                        propertyInfo.SetValue(obj, Int32.TryParse(value, out tempOut) ? tempOut : value, null);
+                        intProperty.SetValue(obj, Int32.Parse(value));
                     }
-                    else if (fieldInfo != null)
+                    else if (stringProperty != null)
                     {
-                        int tempOut = 0;
-                        try
-                        {
-                            fieldInfo.SetValue(obj, Int32.TryParse(value, out tempOut) ? tempOut : value);
-                        }
-                        catch
-                        {
-                            fieldInfo.SetValue(obj, Boolean.Parse(value));
-                        }
+                        stringProperty.SetValue(obj, value);
+                    }
+                    else if (stringProperty != null)
+                    {
+                        boolProperty.SetValue(obj, Boolean.Parse(value));
                     }
                 }
             }

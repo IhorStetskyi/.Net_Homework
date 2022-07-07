@@ -8,11 +8,15 @@ namespace BinarySerialization
     class Department
     {
         public string DepartmentName { get; set; }
-        public List<Employee> employees;
-
-        public Department(string name)
+        public List<Employee> employees { get; set; }
+        public Department(string departmentName)
         {
-            DepartmentName = name;
+            DepartmentName = departmentName;
+            employees = new List<Employee>();
+        }
+        public Department()
+        {
+            DepartmentName = String.Empty;
             employees = new List<Employee>();
         }
     }

@@ -11,7 +11,7 @@ namespace OOP_HW.DataSources
 {
     class FileDataSource : ISource
     {
-        const string filesPath = @"../../../DocumentStorage";
+        const string FilesPath = @"../../../DocumentStorage";
         private readonly IMemoryCache memoryCache;
         public FileDataSource(IMemoryCache memoryCache)
         {
@@ -30,7 +30,7 @@ namespace OOP_HW.DataSources
         private List<IDocument> RetrieveAndCacheData()
         {
             List<IDocument> documents = new();
-            DirectoryInfo directoryInfo = new DirectoryInfo(filesPath);
+            DirectoryInfo directoryInfo = new DirectoryInfo(FilesPath);
             foreach (FileInfo file in directoryInfo.GetFiles())
             {
                 IDocument doc = file.Initialize();

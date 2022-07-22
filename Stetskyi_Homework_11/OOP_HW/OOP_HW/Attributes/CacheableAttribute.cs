@@ -6,9 +6,9 @@ namespace OOP_HW.Attributes
     class CacheableAttribute : Attribute
     {
         public bool ShouldBeCached { get; set; }
-        public CacheableAttribute(bool chacheable)
+        public CacheableAttribute(bool shouldbecached)
         {
-            ShouldBeCached = chacheable;
+            ShouldBeCached = shouldbecached;
         }
     }
 }

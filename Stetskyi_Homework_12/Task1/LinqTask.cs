@@ -49,15 +49,14 @@ namespace Task1
                 throw new ArgumentNullException("Customers and Suppliers can not be null");
             }
 
-            var result = customers.Join(suppliers, c => c.City, w => w.City,
-                (key, value) => new { customerClass = key, supplierList = value }).
-                GroupBy(keySelector: x => x.customerClass,
-                elementSelector: y => y.supplierList,
-                resultSelector: (key, value) => new { customerClass = key, supplierClass = value });
+            var groupedSuppliers = suppliers
+                .GroupBy(x => new { x.City, x.Country },resultSelector: (key, value) => new { cityCountry = key, supplier = value });
 
-            foreach (var item in result)
+            foreach (var item in customers)
             {
-                yield return (item.customerClass, item.supplierClass);
+                yield return (item, groupedSuppliers
+                    .Where(x=>x.cityCountry.City == item.City && x.cityCountry.Country == item.Country)
+                    .SelectMany(x=>x.supplier));
             }
         }
 
@@ -68,7 +67,7 @@ namespace Task1
                 throw new ArgumentNullException("Customers can not be null");
             }
             //Max does not fail test
-            var result = customers.Where(customer => customer.Orders.Count() > 0 && customer.Orders.Max(x => x.Total) > limit);
+            var result = customers.Where(customer => customer.Orders.Any() && customer.Orders.Max(x => x.Total) > limit);
 
             //This looks correct however test fails (Find all customers with the sum of all orders that exceed a certain value). Task typo?
             //var linqResult = customers.Where(customer => customer.Orders.Count() > 0 && customer.Orders.Sum(x => x.Total) > limit);
@@ -83,7 +82,7 @@ namespace Task1
             {
                 throw new ArgumentNullException("Customers can not be null");
             }
-            var result = customers.Where(x => x.Orders.Count() > 0).Select(Customer => new { Customer, DateTime = Customer.Orders.Min(ord => ord.OrderDate) });
+            var result = customers.Where(x => x.Orders.Any()).Select(Customer => new { Customer, DateTime = Customer.Orders.Min(ord => ord.OrderDate) });
 
             foreach (var item in result)
             {
@@ -99,9 +98,14 @@ namespace Task1
             {
                 throw new ArgumentNullException("Customers can not be null");
             }
-            var result = customers.Where(x => x.Orders.Count() > 0).
-                Select(Customer => new { Customer, DateTime = Customer.Orders.Min(ord => ord.OrderDate) })
-                .OrderBy(year => year.DateTime.Year).ThenBy(month => month.DateTime.Month).ThenByDescending(turnover => turnover.Customer.Orders.Sum(o => o.Total)).ThenBy(name => name.Customer.CustomerID);
+            var result = customers
+                .Where(x => x.Orders.Any())
+                . Select(Customer => new { Customer, DateTime = Customer.Orders.Min(ord => ord.OrderDate) })
+                .OrderBy(year => year.DateTime.Year)
+                .ThenBy(month => month.DateTime.Month)
+                .ThenByDescending(turnover => turnover.Customer.Orders
+                .Sum(o => o.Total))
+                .ThenBy(name => name.Customer.CustomerID);
             foreach (var item in result)
             {
                 yield return (item.Customer, item.DateTime);
@@ -138,7 +142,9 @@ namespace Task1
 
             List<Linq7CategoryGroup> categoryGroupListToReturn = new List<Linq7CategoryGroup>();
 
-            var linqResult = products.GroupBy(keySelector: x => x.Category,
+            var linqResult = products
+                .GroupBy(
+                keySelector: x => x.Category,
                 elementSelector: y => y,
                 resultSelector: (key, value) => new {
                     Category = key,
@@ -186,10 +192,12 @@ namespace Task1
             }
 
             var ranges = new[] { cheap, middle, expensive };
-            var result = products.GroupBy(
+            var result = products
+                .GroupBy(
                 keySelector: x => ranges.FirstOrDefault(r => r >= x.UnitPrice),
                 elementSelector: y => y,
-                resultSelector: (key, value) => new { Price = key, Products = value }).OrderBy(x => x.Price);
+                resultSelector: (key, value) => new { Price = key, Products = value })
+                .OrderBy(x => x.Price);
 
             foreach (var item in result)
             {

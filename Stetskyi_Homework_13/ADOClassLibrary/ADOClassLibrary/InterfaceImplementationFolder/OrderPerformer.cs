@@ -12,12 +12,8 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
 {
     public class OrderPerformer : IOrderPerformer
     {
-        private readonly IConnectionProvider connectionProvider;
-        public SqlConnection Connection { get; set; }
-        public SqlCommand CMD { get; set; }
-        public SqlDataAdapter SQLDataAdapter { get; set; }
-        public DataSet DataSetValue { get; set; }
-        public OrderPerformer(IConnectionProvider connectionprovider)
+        private readonly IConnectionController connectionProvider;
+        public OrderPerformer(IConnectionController connectionprovider)
         {
             connectionProvider = connectionprovider;
         }
@@ -25,9 +21,9 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         #region Methods to create and delete stored procedures
         public void CreateStoredProcedure_CreateAndFillOrdersTable()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"CREATE PROCEDURE CreateAndFillOrdersTable
+                connectionProvider.CMD = new SqlCommand(@"CREATE PROCEDURE CreateAndFillOrdersTable
                                         AS
                                         BEGIN
 	                                        IF OBJECT_ID ('Orders') IS NOT NULL
@@ -58,26 +54,26 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
 			                                        ('Cancelled', '20200505 05:05:05 AM', '20220101 11:11:11 AM', 4),
 			                                        ('Done', '20200505 05:05:05 AM', '20220101 11:11:11 AM', 4)
 		                                        END
-                                        END", Connection);
+                                        END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to create Stored Procedure CreateAndFillOrdersTable, \nReason: {e.Message}");
                 }
             }
         }
         public void CreateStoredProcedure_SelectAllOrders()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"CREATE PROCEDURE SelectAllOrders
+                connectionProvider.CMD = new SqlCommand(@"CREATE PROCEDURE SelectAllOrders
                                         @Status NVARCHAR(50) = NULL,
                                         @ProductId INT = NULL,
                                         @Month INT = NULL,
@@ -94,17 +90,17 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
 	                                                            and [Status] = ISNULL(@Status,[Status])
 	                                                            and MONTH(CreatedDate) = ISNULL(@Month,MONTH([CreatedDate]))
 	                                                            and YEAR(CreatedDate) = ISNULL(@Year,YEAR([CreatedDate]))
-                                        END", Connection);
+                                        END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to create Stored Procedure SelectAllOrders, \nReason: {e.Message}");
                 }
 
@@ -112,9 +108,9 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         }
         public void CreateStoredProcedure_DeleteOrders()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"CREATE PROCEDURE DeleteOrders
+                connectionProvider.CMD = new SqlCommand(@"CREATE PROCEDURE DeleteOrders
                                                 @Status NVARCHAR(50) = NULL,
                                                 @ProductId INT = NULL,
                                                 @Month INT = NULL,
@@ -126,17 +122,17 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
 	                                                 and [Status] = ISNULL(@Status,[Status])
 	                                                 and MONTH(CreatedDate) = ISNULL(@Month,MONTH([CreatedDate]))
 	                                                 and YEAR(CreatedDate) = ISNULL(@Year,YEAR([CreatedDate]))
-                                                END", Connection);
+                                                END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to create Stored Procedure DeleteOrders, \nReason: {e.Message}");
                 }
 
@@ -144,66 +140,66 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         }
         public void DeleteStoredProcedure_CreateAndFillOrdersTable()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                SqlCommand cmd = new SqlCommand(@"IF OBJECT_ID ('CreateAndFillOrdersTable') IS NOT NULL
+                connectionProvider.CMD = new SqlCommand(@"IF OBJECT_ID ('CreateAndFillOrdersTable') IS NOT NULL
 		                                            BEGIN
 			                                            DROP PROCEDURE [CreateAndFillOrdersTable];
-		                                            END", Connection);
+		                                            END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    cmd.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    cmd.ExecuteNonQuery();
-                    cmd.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    cmd.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to delete Stored Procedure CreateAndFillOrdersTable, \nReason: {e.Message}");
                 }
             }
         }
         public void DeleteStoredProcedure_SelectAllOrders()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"IF OBJECT_ID ('SelectAllOrders') IS NOT NULL
+                connectionProvider.CMD = new SqlCommand(@"IF OBJECT_ID ('SelectAllOrders') IS NOT NULL
 		                                            BEGIN
 			                                            DROP PROCEDURE [SelectAllOrders];
-		                                            END", Connection);
+		                                            END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to delete Stored Procedure SelectAllOrders, \nReason: {e.Message}");
                 }
             }
         }
         public void DeleteStoredProcedure_DeleteOrders()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"IF OBJECT_ID ('DeleteOrders') IS NOT NULL
+                connectionProvider.CMD = new SqlCommand(@"IF OBJECT_ID ('DeleteOrders') IS NOT NULL
 		                                            BEGIN
 			                                            DROP PROCEDURE [DeleteOrders];
-		                                            END", Connection);
+		                                            END", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to delete Stored Procedure DeleteOrders, \nReason: {e.Message}");
                 }
             }
@@ -214,19 +210,19 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         #region Interface realization
         public void UpdateOrCreateOrdersTable()
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"EXEC CreateAndFillOrdersTable", Connection);
+                connectionProvider.CMD = new SqlCommand(@"EXEC CreateAndFillOrdersTable", connectionProvider.Connection);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to execute Stored Procedure CreateAndFillOrdersTable, \nReason: {e.Message}");
                 }
             }
@@ -245,50 +241,50 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         }
         public int DeleteOrder(int orderId)
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"delete from [Orders] where Id = @OrderId", Connection);
-                CMD.Parameters.AddWithValue("OrderId", orderId);
+                connectionProvider.CMD = new SqlCommand(@"delete from [Orders] where Id = @OrderId", connectionProvider.Connection);
+                connectionProvider.CMD.Parameters.AddWithValue("OrderId", orderId);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    int result = CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    int result = connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                     return result;
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Was not able to delete Order, \nReason: {e.Message}");
                 }
             }
         }
         public void DeleteOrders(int month = -1, string status = "", int year = -1, int productId = -1)
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand("DeleteOrders", Connection);
-                CMD.CommandType = CommandType.StoredProcedure;
+                connectionProvider.CMD = new SqlCommand("DeleteOrders", connectionProvider.Connection);
+                connectionProvider.CMD.CommandType = CommandType.StoredProcedure;
                 if (month != -1)
-                    CMD.Parameters.AddWithValue("@Month", month);
+                    connectionProvider.AddParameters("@Month", month);
                 if (year != -1)
-                    CMD.Parameters.AddWithValue("@Year", year);
+                    connectionProvider.AddParameters("@Year", year);
                 if (status != "")
-                    CMD.Parameters.AddWithValue("@Status", status);
+                    connectionProvider.AddParameters("@Status", status);
                 if (productId != -1)
-                    CMD.Parameters.AddWithValue("@ProductId", productId);
+                    connectionProvider.AddParameters("@ProductId", productId);
 
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to delete Orders, \nReason: {e.Message}");
                 }
             }
@@ -296,42 +292,41 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         public List<Order> GetAllOrders(int month = -1, string status = "", int year = -1, int productId = -1)
         {
             List<Order> orders = new List<Order>();
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand("SelectAllOrders", Connection);
-                CMD.CommandType = CommandType.StoredProcedure;
+                connectionProvider.CMD = new SqlCommand("SelectAllOrders", connectionProvider.Connection);
+                connectionProvider.CMD.CommandType = CommandType.StoredProcedure;
                 if (month != -1)
-                    CMD.Parameters.AddWithValue("@Month", month);
+                    connectionProvider.AddParameters("@Month", month);
                 if (year != -1)
-                    CMD.Parameters.AddWithValue("@Year", year);
+                    connectionProvider.AddParameters("@Year", year);
                 if (status != "")
-                    CMD.Parameters.AddWithValue("@Status", status);
+                    connectionProvider.AddParameters("@Status", status);
                 if (productId != -1)
-                    CMD.Parameters.AddWithValue("@ProductId", productId);
+                    connectionProvider.AddParameters("@ProductId", productId);
 
-                SqlDataReader reader;
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    reader = CMD.ExecuteReader();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    connectionProvider.InitiateReader();
 
-                    while (reader.Read())
+                    while (connectionProvider.Reader.Read())
                     {
                         Order o = new Order();
-                        o.Id = reader.GetFieldValue<int>("Id");
-                        o.Status = reader.GetFieldValue<string>("Status");
-                        o.CreatedDate = reader.GetFieldValue<DateTime>("CreatedDate");
-                        o.UpdatedDate = reader.GetFieldValue<DateTime>("UpdatedDate");
-                        o.ProductId = reader.GetFieldValue<int>("ProductId");
+                        o.Id = connectionProvider.Reader.GetFieldValue<int>("Id");
+                        o.Status = connectionProvider.Reader.GetFieldValue<string>("Status");
+                        o.CreatedDate = connectionProvider.Reader.GetFieldValue<DateTime>("CreatedDate");
+                        o.UpdatedDate = connectionProvider.Reader.GetFieldValue<DateTime>("UpdatedDate");
+                        o.ProductId = connectionProvider.Reader.GetFieldValue<int>("ProductId");
                         orders.Add(o);
                     }
-                    reader.Close();
-                    CMD.Transaction.Commit();
+                    connectionProvider.CloseReader();
+                    connectionProvider.CommitTransaction();
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Failed to get all Products, \nReason: {e.Message}");
                 }
             }
@@ -341,27 +336,27 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         public List<Order> GetAllOrders()
         {
             List<Order> orders = new List<Order>();
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"select
+                connectionProvider.CMD = new SqlCommand(@"select
                                         [Id], 
                                         [Status], 
                                         [CreatedDate],
                                         [UpdatedDate],
-                                        [ProductId] from Orders", Connection);
+                                        [ProductId] from Orders", connectionProvider.Connection);
 
-                SQLDataAdapter = new SqlDataAdapter(CMD);
-                DataSetValue = new DataSet();
-                SQLDataAdapter.Fill(DataSetValue);
+                connectionProvider.InitializeDataAdapter();
+                connectionProvider.InitializeDataSet();
+                connectionProvider.FillDataSet();
 
-                for (int i = 0; i < DataSetValue.Tables[0].Rows.Count; i++)
+                for (int i = 0; i < connectionProvider.DataSetValue.Tables[0].Rows.Count; i++)
                 {
                     Order o = new Order();
-                    o.Id = Convert.ToInt32(DataSetValue.Tables[0].Rows[i]["Id"]);
-                    o.Status = Convert.ToString(DataSetValue.Tables[0].Rows[i]["Status"]);
-                    o.CreatedDate = Convert.ToDateTime(DataSetValue.Tables[0].Rows[i]["CreatedDate"]);
-                    o.UpdatedDate = Convert.ToDateTime(DataSetValue.Tables[0].Rows[i]["UpdatedDate"]);
-                    o.ProductId = Convert.ToInt32(DataSetValue.Tables[0].Rows[i]["ProductId"]);
+                    o.Id = Convert.ToInt32(connectionProvider.DataSetValue.Tables[0].Rows[i]["Id"]);
+                    o.Status = Convert.ToString(connectionProvider.DataSetValue.Tables[0].Rows[i]["Status"]);
+                    o.CreatedDate = Convert.ToDateTime(connectionProvider.DataSetValue.Tables[0].Rows[i]["CreatedDate"]);
+                    o.UpdatedDate = Convert.ToDateTime(connectionProvider.DataSetValue.Tables[0].Rows[i]["UpdatedDate"]);
+                    o.ProductId = Convert.ToInt32(connectionProvider.DataSetValue.Tables[0].Rows[i]["ProductId"]);
                     orders.Add(o);
                 }
                 return orders;
@@ -369,9 +364,9 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
         }
         public int InsertOrder(Order order)
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"insert into [Orders]
+                connectionProvider.CMD = new SqlCommand(@"insert into [Orders]
                                         ([Status],
                                         [CreatedDate], 
                                         [UpdatedDate], 
@@ -379,54 +374,54 @@ namespace ADOClassLibrary.InterfaceImplementationFolder
                                         values(@Status, 
                                                 @CreatedDate, 
                                                 @UpdatedDate, 
-                                                @ProductId)", Connection);
+                                                @ProductId)", connectionProvider.Connection);
 
-                CMD.Parameters.AddWithValue("Status", order.Status);
-                CMD.Parameters.AddWithValue("CreatedDate", order.CreatedDate);
-                CMD.Parameters.AddWithValue("UpdatedDate", order.UpdatedDate);
-                CMD.Parameters.AddWithValue("ProductId", order.ProductId);
+                connectionProvider.AddParameters("Status", order.Status);
+                connectionProvider.AddParameters("CreatedDate", order.CreatedDate);
+                connectionProvider.AddParameters("UpdatedDate", order.UpdatedDate);
+                connectionProvider.AddParameters("ProductId", order.ProductId);
 
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    int result = CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    int result = connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                     return result;
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Was not able to insert Order, \nReason: {e.Message}");
                 }
             }
         }
         public int UpdateOrder(Order order)
         {
-            using (Connection = connectionProvider.GetConnection())
+            using (connectionProvider.Connection = connectionProvider.GetConnection())
             {
-                CMD = new SqlCommand(@"update [Orders]
+                connectionProvider.CMD = new SqlCommand(@"update [Orders]
                                         set [Status] = @Status, 
                                             [CreatedDate] = @CreatedDate, 
                                             [UpdatedDate] = @UpdatedDate, 
                                             [ProductId] = @ProductId
-                                        where Id = @Id;", Connection);
-                CMD.Parameters.AddWithValue("Id", order.Id);
-                CMD.Parameters.AddWithValue("Status", order.Status);
-                CMD.Parameters.AddWithValue("CreatedDate", order.CreatedDate);
-                CMD.Parameters.AddWithValue("UpdatedDate", order.UpdatedDate);
-                CMD.Parameters.AddWithValue("ProductId", order.ProductId);
+                                        where Id = @Id;", connectionProvider.Connection);
+                connectionProvider.AddParameters("Id", order.Id);
+                connectionProvider.AddParameters("Status", order.Status);
+                connectionProvider.AddParameters("CreatedDate", order.CreatedDate);
+                connectionProvider.AddParameters("UpdatedDate", order.UpdatedDate);
+                connectionProvider.AddParameters("ProductId", order.ProductId);
                 try
                 {
-                    Connection.Open();
-                    CMD.Transaction = Connection.BeginTransaction(IsolationLevel.Serializable);
-                    int result = CMD.ExecuteNonQuery();
-                    CMD.Transaction.Commit();
+                    connectionProvider.OpenConnection();
+                    connectionProvider.BeginTransaction();
+                    int result = connectionProvider.CMDExecuteNonQuery();
+                    connectionProvider.CommitTransaction();
                     return result;
                 }
                 catch (Exception e)
                 {
-                    CMD.Transaction.Rollback();
+                    connectionProvider.RollBackTransaction();
                     throw new Exception($"Was not able to delete Order, \nReason: {e.Message}");
                 }
             }

@@ -2,6 +2,7 @@ using ADOClassLibrary.InjectionsFolder;
 using ADOClassLibrary.InterfaceImplementationFolder;
 using ADOClassLibrary.Interfaces;
 using ADOClassLibrary.Models;
+using ADOClassLibrary.StaticClasses;
 using Autofac.Extras.Moq;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -20,127 +21,22 @@ namespace UnitTests
         [Test]
         public void TestMock1()
         {
-            var connectionProvider = new Mock<IConnectionProvider>();
-            var adapter = new Mock<SqlDataAdapter>();
+            var connectionProvider = new Mock<IConnectionController>();
+            connectionProvider.Setup(x => x.GetConnection()).Returns(new SqlConnection()).Verifiable();
+            connectionProvider.Setup(x => x.OpenConnection()).Verifiable();
+            connectionProvider.Setup(x => x.BeginTransaction()).Verifiable();
 
-            adapter.Setup(x => x.Fill(mockDataSet()));
+            IProductPerformer productPerformer = new ProductPerformer(connectionProvider.Object);
 
-            IOrderPerformer orderPerformer = new OrderPerformer(connectionProvider.Object);
+            productPerformer.GetAllProducts();
 
+            connectionProvider.Verify();
 
-            orderPerformer.SQLDataAdapter = adapter.Object;
-
-            orderPerformer.GetAllOrders();
-            string result = orderPerformer.CMD.CommandText;
 
 
         }
 
-        [Test]
-        public void TestMock2()
-        {
-            var connectionProvider = new Mock<IConnectionProvider>();
-
-
-            IProductPerformer ipp = new ProductPerformer(connectionProvider.Object);
-
-            
-
-            ipp.GetAllProducts();
-
-            string result = ipp.CMD.CommandText;
-            Console.WriteLine(result);
-
-
-        }
-
-
-        // [Test]
-        public void TestMock()
-        {
-            // Create the mock
-            //var mock = new Mock<IPerformer>();
-
-            //// Configure the mock to do something
-            //mock.SetupGet(x => x.MyProperty).Returns("FixedValue");
-
-            //// Demonstrate that the configuration works
-            //Assert.AreEqual("FixedValue", mock.Object.MyProperty);
-
-            //// Verify that the mock was invoked
-            //mock.VerifyGet(x => x.MyProperty);
-
-           // var mock = new Mock<IPerformer>();
-           // mock.Setup(x => x.GetAllOrders()).Returns(mockOrders());
-
-            //Mock<IOrderPerformer> p = new Mock<IOrderPerformer>();
-
-
-            //string command = p.Object.CMD.CommandText;
-
-
-            //Assert.AreEqual(7, mock.Object.GetAllOrders().Count());
-
-
-
-
-            //using (var mock = AutoMock.GetLoose())
-            //{
-            //    mock.Mock<IOrderPerformer>()
-            //        .Setup(x => x.GetAllOrders())
-            //        .Returns(mockOrders());
-
-            //    var cls = mock.Create<IOrderPerformer>();
-
-            //    // Mock<IPerformer> p = new Mock<IPerformer>();
-            //    string mystring = cls.CMD.CommandText;
-
-            //    Console.WriteLine(mystring);
-
-            //}
-
-        }
-
-
-
-       // [Test]
-        public void TestGetAllOrders()
-        {
-            //using (var mock = AutoMock.GetLoose())
-            //{
-            //    mock.Mock<IPerformer>()
-            //        .Setup(x => x.GetAllOrders())
-            //        .Returns(mockOrders());
-
-            //    var cls = mock.Create<IPerformer>();
-
-            //   // Mock<IPerformer> p = new Mock<IPerformer>();
-            //    List<Order> actual = cls.GetAllOrders();
-            //    List<Order> expected = mockOrders();
-
-
-            //    Assert.AreEqual(expected.Count(), actual.Count());
-            //}
-            
-        }
-        //[Test]
-        public void TestInsertOrders()
-        {
-            //using (var mock = AutoMock.GetLoose())
-            //{
-            //    Order ord = mockOrders()[0];
-
-            //    mock.Mock<IPerformer>()
-            //        .Setup(x => x.InsertOrder(ord))
-            //        .Returns(1);
-
-            //    var cls = mock.Create<IPerformer>();
-
-            //    int res = cls.InsertOrder(ord);
-
-            //    Assert.AreEqual(1, res);
-            //}
-        }
+        
 
         private List<Order> mockOrders()
         {

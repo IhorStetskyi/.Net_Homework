@@ -10,8 +10,6 @@ namespace ADOClassLibrary.Interfaces
 {
     public interface IProductPerformer
     {
-        public SqlConnection Connection { get; set; }
-        public SqlCommand CMD { get; set; }
         public List<Product> GetAllProducts();
         public int InsertProduct(Product product);
         public int DeleteProduct(int productId);

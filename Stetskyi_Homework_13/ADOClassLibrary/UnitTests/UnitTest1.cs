@@ -19,24 +19,64 @@ namespace UnitTests
     {
 
         [Test]
-        public void TestMock1()
+        public void productPerformer_GetAllProducts()
         {
+
             var connectionProvider = new Mock<IConnectionController>();
             connectionProvider.Setup(x => x.GetConnection()).Returns(new SqlConnection()).Verifiable();
             connectionProvider.Setup(x => x.OpenConnection()).Verifiable();
             connectionProvider.Setup(x => x.BeginTransaction()).Verifiable();
+            connectionProvider.SetupGet(x => x.Reader).Returns(MockIDataReader(mockProducts()));
+            connectionProvider.Setup(x => x.Reader.Read()).Returns(true);
 
             IProductPerformer productPerformer = new ProductPerformer(connectionProvider.Object);
 
             productPerformer.GetAllProducts();
 
             connectionProvider.Verify();
+        }
+        [Test]
+        public void orderPerformer_GetAllProducts()
+        {
+
+            var connectionProvider = new Mock<IConnectionController>();
+            connectionProvider.Setup(x => x.GetConnection()).Returns(new SqlConnection()).Verifiable();
+            connectionProvider.Setup(x => x.InitializeDataAdapter()).Verifiable();
+            connectionProvider.Setup(x => x.InitializeDataSet()).Verifiable();
+            connectionProvider.Setup(x => x.FillDataSet()).Verifiable();
 
 
+            IOrderPerformer orderPerformer = new OrderPerformer(connectionProvider.Object);
+            orderPerformer.GetAllOrders();
 
+            connectionProvider.Verify();
         }
 
-        
+        private IDataReader MockIDataReader(List<Product> ojectsToEmulate)
+        {
+            var moq = new Mock<IDataReader>();
+
+            int count = -1;
+
+            moq.Setup(x => x.Read())
+                .Returns(() => count < ojectsToEmulate.Count - 1)
+                .Callback(() => count++);
+
+            moq.Setup(x => x["Id"])
+                .Returns(() => ojectsToEmulate[count].Id);
+            moq.Setup(x => x["Description"])
+                .Returns(() => ojectsToEmulate[count].Description);
+            moq.Setup(x => x["Height"])
+                .Returns(() => ojectsToEmulate[count].Height);
+            moq.Setup(x => x["Weight"])
+                .Returns(() => ojectsToEmulate[count].Weight);
+            moq.Setup(x => x["Length"])
+                .Returns(() => ojectsToEmulate[count].Length);
+            moq.Setup(x => x["Width"])
+                .Returns(() => ojectsToEmulate[count].Width);
+
+            return moq.Object;
+        }
 
         private List<Order> mockOrders()
         {

@@ -1,17 +1,12 @@
-using ADOClassLibrary.InjectionsFolder;
 using ADOClassLibrary.InterfaceImplementationFolder;
 using ADOClassLibrary.Interfaces;
 using ADOClassLibrary.Models;
-using ADOClassLibrary.StaticClasses;
-using Autofac.Extras.Moq;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace UnitTests
 {
@@ -26,7 +21,6 @@ namespace UnitTests
             connectionProvider.Setup(x => x.GetConnection()).Returns(new SqlConnection()).Verifiable();
             connectionProvider.Setup(x => x.OpenConnection()).Verifiable();
             connectionProvider.Setup(x => x.BeginTransaction()).Verifiable();
-            connectionProvider.SetupGet(x => x.Reader).Returns(MockIDataReader(mockProducts()));
             connectionProvider.Setup(x => x.Reader.Read()).Returns(true);
 
             IProductPerformer productPerformer = new ProductPerformer(connectionProvider.Object);

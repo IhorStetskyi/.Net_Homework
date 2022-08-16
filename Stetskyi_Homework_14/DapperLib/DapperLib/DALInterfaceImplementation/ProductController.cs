@@ -59,7 +59,7 @@ namespace DapperLib.DALInterfaceImplementation
         {
 			string sql = @"delete from [Products]
                            where Id = @Id;";
-			controller.DeleteData<Product>(sql, new Product { Id = productId });
+			controller.CRUDData<Product>(sql, new Product { Id = productId });
 		}
 
         public List<Product> GetAllProducts()
@@ -86,7 +86,7 @@ namespace DapperLib.DALInterfaceImplementation
                                                 @Height, 
                                                 @Width, 
                                                 @Length)";
-			controller.SaveData<Product>(sql, product);
+			controller.CRUDData<Product>(sql, product);
 		}
 
         public void UpdateOrCreateProductsTable()
@@ -103,7 +103,7 @@ namespace DapperLib.DALInterfaceImplementation
                                 [Width] = @Width,
                                 [Length] = @Length
                                 where Id = @Id;";
-            controller.UpdateData<Product>(sql, product);
+            controller.CRUDData<Product>(sql, product);
         }
     }
 }

@@ -62,13 +62,13 @@ namespace UnitTests
                                                 @ProductId)";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.SaveData<Order>(sql, ord));
+                    .Setup(x => x.CRUDData<Order>(sql, ord));
 
                 var orderController = mock.Create<OrderController>();
                 orderController.InsertOrder(ord);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.SaveData<Order>(sql, ord), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Order>(sql, ord), Times.Exactly(1));
 
             }
         }
@@ -90,13 +90,13 @@ namespace UnitTests
                                 where Id = @Id;";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.UpdateData<Order>(sql, ord));
+                    .Setup(x => x.CRUDData<Order>(sql, ord));
 
                 var orderController = mock.Create<OrderController>();
                 orderController.UpdateOrder(ord);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.UpdateData<Order>(sql, ord), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Order>(sql, ord), Times.Exactly(1));
 
             }
         }
@@ -112,13 +112,13 @@ namespace UnitTests
                            where Id = @Id;";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.DeleteData<Order>(sql, ord));
+                    .Setup(x => x.CRUDData<Order>(sql, ord));
 
                 var orderController = mock.Create<OrderController>();
                 orderController.DeleteOrder(orderId);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.DeleteData<Order>(sql, ord), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Order>(sql, ord), Times.Exactly(1));
 
             }
         }
@@ -176,13 +176,13 @@ namespace UnitTests
                                                 @Length)";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.SaveData<Product>(sql, prod));
+                    .Setup(x => x.CRUDData<Product>(sql, prod));
 
                 var productController = mock.Create<ProductController>();
                 productController.InsertProduct(prod);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.SaveData<Product>(sql, prod), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Product>(sql, prod), Times.Exactly(1));
 
             }
         }
@@ -210,13 +210,13 @@ namespace UnitTests
                                 where Id = @Id;";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.UpdateData<Product>(sql, prod));
+                    .Setup(x => x.CRUDData<Product>(sql, prod));
 
                 var productController = mock.Create<ProductController>();
                 productController.UpdateProduct(prod);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.UpdateData<Product>(sql, prod), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Product>(sql, prod), Times.Exactly(1));
 
             }
         }
@@ -232,13 +232,13 @@ namespace UnitTests
                            where Id = @Id;";
 
                 mock.Mock<IConnectionController>()
-                    .Setup(x => x.DeleteData<Product>(sql, prod));
+                    .Setup(x => x.CRUDData<Product>(sql, prod));
 
                 var productController = mock.Create<OrderController>();
                 productController.DeleteOrder(productId);
 
                 mock.Mock<IConnectionController>()
-                    .Verify(x => x.DeleteData<Product>(sql, prod), Times.Exactly(1));
+                    .Verify(x => x.CRUDData<Product>(sql, prod), Times.Exactly(1));
 
             }
         }

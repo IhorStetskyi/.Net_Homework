@@ -66,7 +66,7 @@ namespace DapperLib.DALInterfaceImplementation
                                                 @CreatedDate, 
                                                 @UpdatedDate, 
                                                 @ProductId)";
-            controller.SaveData<Order>(sql, order);
+            controller.CRUDData<Order>(sql, order);
         }
         public void UpdateOrder(Order order)
         {
@@ -76,13 +76,13 @@ namespace DapperLib.DALInterfaceImplementation
                                 [UpdatedDate] = @UpdatedDate, 
                                 [ProductId] = @ProductId
                                 where Id = @Id;";
-            controller.UpdateData<Order>(sql, order);
+            controller.CRUDData<Order>(sql, order);
         }
         public void DeleteOrder(int orderId)
         {
             string sql = @"delete from [Orders]
                            where Id = @Id;";
-            controller.DeleteData<Order>(sql, new Order {Id = orderId });
+            controller.CRUDData<Order>(sql, new Order {Id = orderId });
         }
 
         public void CreateStoredProcedures()

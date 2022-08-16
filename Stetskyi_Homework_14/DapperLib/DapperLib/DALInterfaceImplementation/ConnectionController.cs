@@ -43,27 +43,15 @@ namespace DapperLib.DALInterfaceImplementation
             }
             return result;
         }
-        public void SaveData<T>(string sql, T item )
+
+        public void CRUDData<T>(string sql, T item)
         {
             using (IDbConnection connection = CreateConnection())
             {
                 connection.Execute(sql, item);
             }
         }
-        public void UpdateData<T>(string sql, T item)
-        {
-            using (IDbConnection connection = CreateConnection())
-            {
-                connection.Execute(sql, item);
-            }
-        }
-        public void DeleteData<T>(string sql, T item)
-        {
-            using (IDbConnection connection = CreateConnection())
-            {
-                connection.Execute(sql, item);
-            }
-        }
+
         public List<T> LoadDataFiltred<T>(string sql, object myParams)
         {
             List<T> result = new List<T>();

@@ -1,0 +1,44 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Products Page";
+}
+@{int ParsedValue = Convert.ToInt32(@Configuration["MyConfigFeature:MaxProducts"]); }
+@{int ValueToUse = (ParsedValue > 0 ? ParsedValue : Model.Count); }
+<h1>@ViewData["Title"]</h1>
+
+<u>Products:</u>
+
+<body>
+    <p>
+        <table border="1" style="border-width: 5px; border-color: #C0C0C0; border-style: double;">
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>CompanyName</th>
+                <th>CategoryName</th>
+                <th>QuantityPerUnit</th>
+                <th>UnitPrice</th>
+                <th>UnitsInStock</th>
+                <th>UnitsOnOrder</th>
+                <th>ReorderLevel</th>
+                <th>Discounting</th>
+            </tr>
+            @for (int i = 0; i < ValueToUse; i++)
+            {
+                <tr>
+                    <td>@Model[i].ProductID</td>
+                    <td>@Model[i].ProductName</td>
+                    <td>@Model[i].CompanyName</td>
+                    <td>@Model[i].CategoryName</td>
+                    <td>@Model[i].QuantityPerUnit</td>
+                    <td>@Model[i].UnitPrice</td>
+                    <td>@Model[i].UnitsInStock</td>
+                    <td>@Model[i].UnitsOnOrder</td>
+                    <td>@Model[i].ReorderLevel</td>
+                    <td>@Model[i].Discontinued</td>
+                </tr>
+            }
+        </table>
+    </p>
+</body>

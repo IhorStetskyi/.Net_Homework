@@ -1,10 +1,11 @@
 ﻿@using Microsoft.Extensions.Configuration
+@model (List<Product>, int MaxValue)
 @inject IConfiguration Configuration
 @{
     ViewData["Title"] = "Products Page";
 }
-@{int ParsedValue = Convert.ToInt32(@Configuration["MyConfigFeature:MaxProducts"]); }
-@{int ValueToUse = (ParsedValue > 0 ? ParsedValue : Model.Count); }
+@{int Max = (Model.MaxValue > 0 ? Model.MaxValue : Model.Item1.Count); }
+
 <h1>@ViewData["Title"]</h1>
 
 <u>Products:</u>
@@ -24,19 +25,19 @@
                 <th>ReorderLevel</th>
                 <th>Discounting</th>
             </tr>
-            @for (int i = 0; i < ValueToUse; i++)
+            @for (int i = 0; i < Max; i++)
             {
                 <tr>
-                    <td>@Model[i].ProductID</td>
-                    <td>@Model[i].ProductName</td>
-                    <td>@Model[i].CompanyName</td>
-                    <td>@Model[i].CategoryName</td>
-                    <td>@Model[i].QuantityPerUnit</td>
-                    <td>@Model[i].UnitPrice</td>
-                    <td>@Model[i].UnitsInStock</td>
-                    <td>@Model[i].UnitsOnOrder</td>
-                    <td>@Model[i].ReorderLevel</td>
-                    <td>@Model[i].Discontinued</td>
+                    <td>@Model.Item1[i].ProductID</td>
+                    <td>@Model.Item1[i].ProductName</td>
+                    <td>@Model.Item1[i].CompanyName</td>
+                    <td>@Model.Item1[i].CategoryName</td>
+                    <td>@Model.Item1[i].QuantityPerUnit</td>
+                    <td>@Model.Item1[i].UnitPrice</td>
+                    <td>@Model.Item1[i].UnitsInStock</td>
+                    <td>@Model.Item1[i].UnitsOnOrder</td>
+                    <td>@Model.Item1[i].ReorderLevel</td>
+                    <td>@Model.Item1[i].Discontinued</td>
                 </tr>
             }
         </table>

@@ -1,16 +1,19 @@
-﻿@{
+﻿@using MyWebApplication;
+@{
     ViewData["Title"] = "Categories Page";
 }
+@model List<Category>
 <center><h1>@ViewData["Title"]</h1></center>
+
 
 <u>Categories:</u>
 <body>
     <p>
         <table>
-            @foreach (var item in Model)
+            @foreach (Category cat in Model)
             {
                 <tr>
-                    <td>@item.CategoryName</td>
+                    <td>@cat.CategoryName</td>
                 </tr>
             }
         </table>

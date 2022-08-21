@@ -1,0 +1,67 @@
+﻿@using MyWebApplication.Controllers;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration;
+@model Product
+@{
+    List<Category> categories = new CategoryController(Configuration).categoryList();
+    //List<string> names = new List<string>(); 
+    //foreach (Category c in categories)
+    //{
+    //    names.Add(c.CategoryName);
+    //}
+}
+
+
+<body>
+    <p>
+        <table border="1" style="border-width: 5px; border-color: #C0C0C0; border-style: double;">
+            <tr>
+                <th>ProductID</th>
+                <th><input id="Text1" type="text" value=@Model.ProductID></th>
+            </tr>
+            <tr>
+                <th>ProductName</th>
+                <th><input id="Text2" type="text" value=@Model.ProductName></th>
+            </tr>
+            <tr>
+                <th>SupplierID</th>
+                <th><input id="Text3" type="text" value=@Model.SupplierID></th>
+            </tr>
+            <tr>
+                <th>CategoryID</th>
+                <th>@Html.DropDownList("CategoryName", 
+                    new SelectList(categories),
+                    "Select Category"
+                    )</th>
+            </tr>
+            <tr>
+                <th>QuantityPerUnit</th>
+                <th><input id="Text5" type="text" value=@Model.QuantityPerUnit></th>
+            </tr>
+            <tr>
+                <th>UnitPrice</th>
+                <th><input id="Text6" type="text" value=@Model.UnitPrice></th>
+            </tr>
+            <tr>
+                <th>UnitsInStock</th>
+                <th><input id="Text7" type="text" value=@Model.UnitsInStock></th>
+            </tr>
+            <tr>
+                <th>UnitsOnOrder</th>
+                <th><input id="Text8" type="text" value=@Model.UnitsOnOrder></th>
+            </tr>
+            <tr>
+                <th>ReorderLevel</th>
+                <th><input id="Text9" type="text" value=@Model.ReorderLevel></th>
+            </tr>
+            <tr>
+                <th>Discontinued</th>
+                <th><input id="Text10" type="text" value=@Model.Discontinued></th>
+            </tr>
+        </table>
+    </p>
+</body>
+
+
+
+<input type="button" value="Update" onclick="location.href='@Url.Action("UpdateProduct", "EditProduct", new Product { ProductID = 1, ProductName = "Chai2", SupplierID = 1, CategoryID = 1, QuantityPerUnit = "10 boxes x 20 bags", UnitPrice = 18.00m, UnitsInStock = 39, UnitsOnOrder = 0, ReorderLevel = 10, Discontinued = 0 })'" />

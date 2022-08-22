@@ -27,6 +27,9 @@ namespace MyWebApplication.Models
         public int Discontinued { get; set; }
         public int CategoryID { get; set; }
         public int SupplierID { get; set; }
+        public Category category { get { return new Category { CategoryID = this.CategoryID, CategoryName = this.CategoryName }; } set { category = value; } }
+
+
 
     }
 }

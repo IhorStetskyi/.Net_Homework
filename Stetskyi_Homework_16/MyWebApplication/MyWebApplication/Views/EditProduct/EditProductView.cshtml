@@ -9,6 +9,21 @@
     //{
     //    names.Add(c.CategoryName);
     //}
+    var @SelectedCategoryID = @Model.CategoryID;
+
+
+    int MapCategory(string catName)
+    {
+        foreach (Category cat in categories)
+        {
+            if (cat.CategoryName == catName)
+            {
+                return cat.CategoryID;
+            }
+        }
+        return 0;
+    }
+
 }
 
 
@@ -30,7 +45,7 @@
             <tr>
                 <th>CategoryID</th>
                 <th>@Html.DropDownList("CategoryName", 
-                    new SelectList(categories),
+                    new SelectList(categories.Select(x=>x.CategoryName)),
                     "Select Category"
                     )</th>
             </tr>
@@ -64,4 +79,14 @@
 
 
 
-<input type="button" value="Update" onclick="location.href='@Url.Action("UpdateProduct", "EditProduct", new Product { ProductID = 1, ProductName = "Chai2", SupplierID = 1, CategoryID = 1, QuantityPerUnit = "10 boxes x 20 bags", UnitPrice = 18.00m, UnitsInStock = 39, UnitsOnOrder = 0, ReorderLevel = 10, Discontinued = 0 })'" />
+<input type="button" value="Update" onclick="location.href='@Url.Action( "EditProduct", 
+                                                           new Product { ProductID = Convert.ToInt32(@Html.TextBox("Text1")),
+                                                               ProductName = @Html.TextBox("Text2").ToString(),
+                                                               SupplierID = Convert.ToInt32(@Html.TextBox("Text3")),
+                                                               CategoryID = MapCategory("Beverages"),
+                                                               QuantityPerUnit = @Html.TextBox("Text5").ToString(),
+                                                               UnitPrice =  Convert.ToDecimal(@Html.TextBox("Text6")),
+                                                               UnitsInStock = Convert.ToInt32(@Html.TextBox("Text7")),
+                                                               UnitsOnOrder =Convert.ToInt32(@Html.TextBox("Text8")),
+                                                               ReorderLevel = Convert.ToInt32(@Html.TextBox("Text9")),
+                                                               Discontinued = Convert.ToInt32(@Html.TextBox("Text10")) })'" />
